@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>বাংলার মিউচুয়াল ফান্ড — সুমিত মল্লিক</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Noto+Serif+Bengali:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --green: #1D9E75;
+    --green-light: #E1F5EE;
+    --green-dark: #085041;
+    --green-darkest: #04342C;
+    --amber: #EF9F27;
+    --amber-light: #FAEEDA;
+    --coral: #D85A30;
+    --coral-light: #FAECE7;
+    --white: #ffffff;
+    --bg: #f8faf9;
+    --bg2: #f0f4f2;
+    --text: #1a1a1a;
+    --text-muted: #6b7280;
+    --border: rgba(0,0,0,0.08);
+    --font: 'Hind Siliguri', sans-serif;
+    --serif: 'Noto Serif Bengali', serif;
+    --radius: 12px;
+    --radius-sm: 8px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font);
+    color: var(--text);
+    background: var(--bg);
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  /* HEADER / NAV */
+  header {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    padding: 0 1.5rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .nav {
+    max-width: 680px;
+    margin: 0 auto;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .nav-brand {
+    font-family: var(--serif);
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--green-darkest);
+    text-decoration: none;
+  }
+  .nav-brand span { color: var(--green); }
+  .nav-cta {
+    background: var(--green);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    font-family: var(--font);
+    padding: 7px 16px;
+    border-radius: 20px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  /* MAIN CONTAINER */
+  main {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 1.5rem 1rem 3rem;
+  }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, #04342C 0%, #0F6E56 55%, #1D9E75 100%);
+    padding: 2.5rem 1.5rem 3rem;
+    border-radius: var(--radius);
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+  }
+  .hero::before {
+    content: '৳';
+    position: absolute;
+    right: -15px;
+    top: -25px;
+    font-size: 220px;
+    color: rgba(255,255,255,0.04);
+    font-family: var(--serif);
+    font-weight: 700;
+    line-height: 1;
+    pointer-events: none;
+  }
+  .hero-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.14);
+    color: #9FE1CB;
+    font-size: 12px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 0.8rem;
+    border: 0.5px solid rgba(255,255,255,0.2);
+  }
+  .hero h1 {
+    font-family: var(--serif);
+    font-size: 32px;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.25;
+    margin-bottom: 0.6rem;
+  }
+  .hero h1 span { color: #5DCAA5; }
+  .hero-sub {
+    font-size: 15px;
+    color: rgba(255,255,255,0.75);
+    margin-bottom: 1.75rem;
+    line-height: 1.65;
+  }
+  .hero-name {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255,255,255,0.1);
+    border: 0.5px solid rgba(255,255,255,0.2);
+    border-radius: var(--radius-sm);
+    padding: 10px 14px;
+  }
+  .hero-avatar {
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    background: #5DCAA5;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 14px; color: #04342C;
+    flex-shrink: 0;
+  }
+  .hero-name-text { font-size: 14px; color: rgba(255,255,255,0.92); font-weight: 600; }
+  .hero-name-title { font-size: 11px; color: rgba(255,255,255,0.58); }
+  .hero-new-tag {
+    position: absolute;
+    top: 14px; right: 14px;
+    background: var(--amber);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 11px;
+    border-radius: 20px;
+  }
+
+  /* STATS */
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 1.75rem;
+  }
+  .stat-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 14px 10px;
+    text-align: center;
+  }
+  .stat-num { font-size: 22px; font-weight: 700; color: var(--green); font-family: var(--serif); }
+  .stat-label { font-size: 11px; color: var(--text-muted); margin-top: 3px; }
+
+  /* SECTIONS */
+  .section { margin-bottom: 2rem; }
+  .section-title {
+    font-family: var(--serif);
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    padding-left: 12px;
+    border-left: 3px solid var(--green);
+    line-height: 1.3;
+    color: var(--green-darkest);
+  }
+
+  /* CALCULATOR */
+  .calc-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+  .calc-tabs {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 1.25rem;
+    background: var(--bg2);
+    padding: 4px;
+    border-radius: var(--radius-sm);
+  }
+  .calc-tab {
+    flex: 1;
+    padding: 8px;
+    font-size: 13px;
+    font-family: var(--font);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    background: transparent;
+    color: var(--text-muted);
+    font-weight: 600;
+    transition: all 0.2s;
+  }
+  .calc-tab.active { background: var(--green); color: #fff; }
+
+  .field-label {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .field-label span { font-weight: 700; color: var(--green); font-size: 14px; }
+  .slider-row { margin-bottom: 16px; }
+  input[type=range] {
+    width: 100%;
+    height: 4px;
+    accent-color: var(--green);
+    cursor: pointer;
+  }
+
+  .result-box {
+    background: var(--green-darkest);
+    border-radius: var(--radius-sm);
+    padding: 1.1rem;
+    margin-top: 1rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .result-item { text-align: center; }
+  .r-label { font-size: 11px; color: #9FE1CB; margin-bottom: 5px; }
+  .r-val { font-size: 18px; font-weight: 700; color: #fff; font-family: var(--serif); }
+  .r-val.highlight { color: #5DCAA5; font-size: 22px; }
+
+  .bar-vis {
+    margin-top: 14px;
+    display: flex;
+    gap: 8px;
+    align-items: flex-end;
+    height: 64px;
+    grid-column: 1/-1;
+  }
+  .bar-label { font-size: 10px; color: rgba(255,255,255,0.65); padding-bottom: 3px; text-align: center; }
+  .bar-wrap { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 4px; height: 100%; justify-content: flex-end; }
+  .bar-inner {
+    width: 100%;
+    border-radius: 4px 4px 0 0;
+    transition: height 0.4s ease;
+    display: flex; align-items: flex-end; justify-content: center;
+    padding-bottom: 4px;
+  }
+  .bar-invest { background: rgba(255,255,255,0.22); }
+  .bar-profit { background: #5DCAA5; }
+  .bar-inner span { font-size: 10px; font-weight: 600; color: rgba(255,255,255,0.8); }
+  .bar-profit span { color: #04342C; }
+
+  /* DELAY LOSS */
+  .delay-result {
+    background: linear-gradient(135deg, #3B0A0A 0%, #7B2020 100%);
+    border-radius: var(--radius-sm);
+    padding: 1.1rem;
+    margin-top: 1rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .delay-result .r-label { color: #FFBCBC; }
+  .delay-result .r-val { color: #fff; }
+  .delay-result .r-val.loss-big { color: #FF7C7C; font-size: 22px; }
+  .delay-note {
+    background: var(--coral-light);
+    border-left: 3px solid var(--coral);
+    padding: 10px 12px;
+    border-radius: 0 6px 6px 0;
+    font-size: 12px;
+    color: #7A2010;
+    margin-top: 12px;
+    line-height: 1.6;
+  }
+
+  /* INFLATION */
+  .infl-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+  }
+  .infl-result {
+    background: #fff5f2;
+    border: 1px solid rgba(216,90,48,0.15);
+    border-radius: var(--radius-sm);
+    padding: 1rem;
+    margin-top: 1rem;
+  }
+  .infl-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 7px 0;
+    border-bottom: 1px solid rgba(216,90,48,0.08);
+    font-size: 13px;
+  }
+  .infl-row:last-child { border-bottom: none; }
+  .infl-row .ilabel { color: #993C1D; }
+  .infl-row .ival { font-weight: 700; color: #D85A30; font-family: var(--serif); }
+  .infl-row .ival.loss { color: #993C1D; }
+  .infl-warning {
+    background: var(--amber-light);
+    border-left: 3px solid var(--amber);
+    padding: 10px 12px;
+    border-radius: 0 6px 6px 0;
+    font-size: 12px;
+    color: #633806;
+    margin-top: 12px;
+    line-height: 1.6;
+  }
+
+  /* WHY CARDS */
+  .why-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .why-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px;
+  }
+  .why-icon {
+    width: 38px; height: 38px;
+    border-radius: var(--radius-sm);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  .why-card h3 { font-size: 14px; font-weight: 600; margin-bottom: 5px; color: var(--green-darkest); }
+  .why-card p { font-size: 12px; color: var(--text-muted); line-height: 1.55; }
+
+  /* STEPS */
+  .steps { display: flex; flex-direction: column; }
+  .step { display: flex; gap: 14px; position: relative; }
+  .step:not(:last-child)::before {
+    content: '';
+    position: absolute;
+    left: 15px; top: 34px; bottom: 0;
+    width: 1px;
+    background: var(--border);
+  }
+  .step-num {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    background: var(--green-light);
+    color: var(--green-dark);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 700;
+    flex-shrink: 0; z-index: 1;
+  }
+  .step-content { padding-bottom: 1.4rem; }
+  .step-content h4 { font-size: 15px; font-weight: 600; margin-bottom: 4px; color: var(--green-darkest); }
+  .step-content p { font-size: 13px; color: var(--text-muted); line-height: 1.55; }
+
+  /* REVIEWS */
+  .reviews-section { margin-bottom: 2rem; }
+  .review-cards { display: flex; flex-direction: column; gap: 12px; }
+  .review-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px;
+    position: relative;
+  }
+  .review-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  .review-avatar {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px; font-weight: 700;
+    flex-shrink: 0;
+    color: #fff;
+  }
+  .review-meta { flex: 1; }
+  .review-name { font-size: 14px; font-weight: 700; color: var(--green-darkest); }
+  .review-location { font-size: 11px; color: var(--text-muted); }
+  .review-stars { font-size: 13px; color: var(--amber); letter-spacing: 1px; }
+  .review-body { font-size: 13px; color: #374151; line-height: 1.65; }
+  .review-tag {
+    display: inline-block;
+    background: var(--green-light);
+    color: var(--green-dark);
+    font-size: 10px;
+    font-weight: 600;
+    padding: 3px 9px;
+    border-radius: 20px;
+    margin-top: 10px;
+  }
+  .review-quote {
+    position: absolute;
+    top: 12px; right: 14px;
+    font-size: 32px;
+    color: var(--green-light);
+    font-family: Georgia, serif;
+    line-height: 1;
+  }
+
+  /* CONTACT */
+  .contact-section {
+    background: linear-gradient(135deg, #04342C 0%, #0F6E56 100%);
+    border-radius: var(--radius);
+    padding: 1.75rem 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .contact-section h2 {
+    font-family: var(--serif);
+    font-size: 22px;
+    color: #fff;
+    margin-bottom: 0.3rem;
+  }
+  .contact-section > p {
+    font-size: 13px;
+    color: rgba(255,255,255,0.68);
+    margin-bottom: 1.25rem;
+  }
+  .phone-display {
+    text-align: center;
+    background: rgba(255,255,255,0.09);
+    border: 0.5px solid rgba(255,255,255,0.18);
+    border-radius: var(--radius-sm);
+    padding: 12px;
+    margin-bottom: 1rem;
+  }
+  .phone-display .pnum {
+    font-size: 26px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 2px;
+    font-family: var(--serif);
+    display: block;
+  }
+  .phone-display small {
+    font-size: 12px;
+    color: rgba(255,255,255,0.52);
+    display: block;
+    margin-top: 3px;
+  }
+  .contact-btns { display: flex; flex-direction: column; gap: 10px; }
+  .contact-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 14px 16px;
+    border-radius: var(--radius-sm);
+    font-size: 15px;
+    font-weight: 700;
+    font-family: var(--font);
+    cursor: pointer;
+    border: none;
+    text-decoration: none;
+    transition: opacity 0.18s, transform 0.1s;
+  }
+  .contact-btn:hover { opacity: 0.88; }
+  .contact-btn:active { transform: scale(0.98); }
+  .wa-btn { background: #25D366; color: #fff; }
+  .call-btn {
+    background: rgba(255,255,255,0.14);
+    color: #fff;
+    border: 0.5px solid rgba(255,255,255,0.28);
+  }
+  .contact-info-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 0 0;
+    border-top: 0.5px solid rgba(255,255,255,0.14);
+    margin-top: 1rem;
+    font-size: 12px;
+    color: rgba(255,255,255,0.55);
+  }
+
+  /* DISCLAIMER */
+  .disclaimer {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 10px 14px;
+    font-size: 11px;
+    color: var(--text-muted);
+    line-height: 1.65;
+    margin-top: 0.75rem;
+    border-left: 3px solid #e5e7eb;
+  }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    padding: 1.5rem 1rem;
+    font-size: 12px;
+    color: var(--text-muted);
+    border-top: 1px solid var(--border);
+  }
+  footer strong { color: var(--green); }
+
+  /* Hide desktop-only elements on mobile */
+  .hero-right { display: none; }
+  .sidebar-sticky { display: contents; }
+
+  /* DESKTOP LAYOUT */
+  @media (min-width: 900px) {
+    header {
+      padding: 0 2.5rem;
+    }
+    .nav {
+      max-width: 1160px;
+      height: 64px;
+    }
+    .nav-brand { font-size: 18px; }
+
+    main {
+      max-width: 1160px;
+      padding: 2rem 2rem 4rem;
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 0 2rem;
+      align-items: start;
+    }
+
+    /* Hero spans full width */
+    .hero {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: center;
+      padding: 3rem 2.5rem;
+    }
+    .hero::before { font-size: 300px; right: -30px; top: -50px; }
+    .hero h1 { font-size: 42px; }
+    .hero-new-tag { top: 18px; right: 18px; }
+    .hero-right { display: flex; flex-direction: column; gap: 12px; }
+    .hero-stats-desktop {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+    .hero-stat-box {
+      background: rgba(255,255,255,0.1);
+      border: 0.5px solid rgba(255,255,255,0.2);
+      border-radius: var(--radius-sm);
+      padding: 14px 10px;
+      text-align: center;
+    }
+    .hero-stat-box .hsnum { font-size: 22px; font-weight: 700; color: #5DCAA5; font-family: var(--serif); }
+    .hero-stat-box .hslabel { font-size: 11px; color: rgba(255,255,255,0.65); margin-top: 3px; }
+
+    /* Stats row is hidden on desktop (shown in hero instead) */
+    .stats-row { display: none; }
+
+    /* Calculator section takes left column */
+    #calculator { grid-column: 1; }
+
+    /* Inflation calculator below calculator in left column */
+    #inflation { grid-column: 1; }
+
+    /* Delay calculator in left column */
+    #delay { grid-column: 1; }
+
+    /* Why cards in left column */
+    .section:has(.why-cards) { grid-column: 1; }
+    .why-cards { grid-template-columns: repeat(4, 1fr); }
+
+    /* How to start in left column */
+    .section:has(.steps) { grid-column: 1; }
+
+    /* Reviews in left column */
+    .reviews-section { grid-column: 1; }
+    .review-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .review-cards .review-card:last-child { grid-column: 1 / -1; }
+
+    /* Sticky right sidebar: contact + disclaimer */
+    .sidebar-sticky {
+      display: flex;
+      grid-column: 2;
+      grid-row: 2 / 8;
+      position: sticky;
+      top: 80px;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .contact-section {
+      grid-column: unset;
+      margin-bottom: 0;
+    }
+
+    .disclaimer {
+      margin-top: 0;
+    }
+
+    footer { grid-column: 1 / -1; }
+  }
+
+  /* MOBILE / SMALL RESPONSIVE */
+  @media (max-width: 480px) {
+    .hero h1 { font-size: 26px; }
+    .why-cards { grid-template-columns: 1fr; }
+    .stats-row { gap: 7px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="nav">
+    <a class="nav-brand" href="#">বাংলার <span>মিউচুয়াল ফান্ড</span></a>
+    <a class="nav-cta" href="https://wa.me/917003951662?text=নমস্কার%2Cআমি%20মিউচুয়াল%20ফান্ডে%20ইনভেস্ট%20করতে%20চাই।">এখনই শুরু করুন</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-new-tag">নতুন সূচনা ✦</div>
+    <!-- Left side -->
+    <div>
+      <div class="hero-badge">🇮🇳 AMFI নথিভুক্ত বিতরণকারী</div>
+      <h1>বাংলার<br><span>মিউচুয়াল ফান্ড</span></h1>
+      <p class="hero-sub">বাংলায় বুঝুন, বাংলায় বিনিয়োগ করুন।<br>আপনার ভবিষ্যৎ গড়ুন আজ থেকেই।</p>
+      <div class="hero-name">
+        <div class="hero-avatar">SM</div>
+        <div>
+          <div class="hero-name-text">সুমিত মল্লিক</div>
+          <div class="hero-name-title">মিউচুয়াল ফান্ড বিতরণকারী</div>
+        </div>
+      </div>
+    </div>
+    <!-- Right side — desktop only stats inside hero -->
+    <div class="hero-right">
+      <div class="hero-stats-desktop">
+        <div class="hero-stat-box">
+          <div class="hsnum">SIP</div>
+          <div class="hslabel">সহজ বিনিয়োগ</div>
+        </div>
+        <div class="hero-stat-box">
+          <div class="hsnum">৳</div>
+          <div class="hslabel">বাংলায় পরামর্শ</div>
+        </div>
+        <div class="hero-stat-box">
+          <div class="hsnum">0%</div>
+          <div class="hslabel">পরামর্শ ফি</div>
+        </div>
+      </div>
+      <div style="background:rgba(255,255,255,0.07);border:0.5px solid rgba(255,255,255,0.15);border-radius:var(--radius-sm);padding:16px 18px;">
+        <p style="font-size:14px;color:rgba(255,255,255,0.85);line-height:1.7;margin-bottom:14px;">মিউচুয়াল ফান্ড বিনিয়োগ এখন আর শুধু শহরের মানুষের জন্য নয় — বাংলায় পরামর্শ পান, সহজ ভাষায় বুঝুন।</p>
+        <a class="nav-cta" style="display:inline-block;font-size:14px;padding:10px 22px;" href="https://wa.me/917003951662?text=নমস্কার%2Cআমি%20মিউচুয়াল%20ফান্ডে%20ইনভেস্ট%20করতে%20চাই।">এখনই শুরু করুন →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats-row">
+    <div class="stat-card">
+      <div class="stat-num">SIP</div>
+      <div class="stat-label">সহজ বিনিয়োগ</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">৳</div>
+      <div class="stat-label">বাংলায় পরামর্শ</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">0%</div>
+      <div class="stat-label">পরামর্শ ফি</div>
+    </div>
+  </div>
+
+  <!-- SIP CALCULATOR -->
+  <div class="section" id="calculator">
+    <div class="section-title">SIP ক্যালকুলেটর</div>
+    <div class="calc-card">
+      <div class="calc-tabs">
+        <button class="calc-tab active" id="tab-sip" onclick="switchTab('sip')">SIP (মাসিক)</button>
+        <button class="calc-tab" id="tab-lump" onclick="switchTab('lump')">একমুঠো (Lumpsum)</button>
+      </div>
+
+      <div id="sip-section">
+        <div class="slider-row">
+          <div class="field-label">মাসিক বিনিয়োগ <span id="sip-amt-lbl">₹5,000</span></div>
+          <input type="range" min="500" max="100000" step="500" value="5000" id="sip-amt" oninput="calcSIP()">
+        </div>
+        <div class="slider-row">
+          <div class="field-label">প্রত্যাশিত রিটার্ন (বার্ষিক) <span id="sip-rate-lbl">12%</span></div>
+          <input type="range" min="6" max="20" step="0.5" value="12" id="sip-rate" oninput="calcSIP()">
+        </div>
+        <div class="slider-row">
+          <div class="field-label">সময়কাল <span id="sip-yr-lbl">10 বছর</span></div>
+          <input type="range" min="1" max="30" step="1" value="10" id="sip-yr" oninput="calcSIP()">
+        </div>
+      </div>
+
+      <div id="lump-section" style="display:none">
+        <div class="slider-row">
+          <div class="field-label">বিনিয়োগের পরিমাণ <span id="lump-amt-lbl">₹1,00,000</span></div>
+          <input type="range" min="1000" max="1000000" step="1000" value="100000" id="lump-amt" oninput="calcLump()">
+        </div>
+        <div class="slider-row">
+          <div class="field-label">প্রত্যাশিত রিটার্ন (বার্ষিক) <span id="lump-rate-lbl">12%</span></div>
+          <input type="range" min="6" max="20" step="0.5" value="12" id="lump-rate" oninput="calcLump()">
+        </div>
+        <div class="slider-row">
+          <div class="field-label">সময়কাল <span id="lump-yr-lbl">10 বছর</span></div>
+          <input type="range" min="1" max="30" step="1" value="10" id="lump-yr" oninput="calcLump()">
+        </div>
+      </div>
+
+      <div class="result-box">
+        <div class="result-item">
+          <div class="r-label">মোট বিনিয়োগ</div>
+          <div class="r-val" id="r-invested">₹6,00,000</div>
+        </div>
+        <div class="result-item">
+          <div class="r-label">মোট মূল্য</div>
+          <div class="r-val highlight" id="r-total">₹11,61,695</div>
+        </div>
+        <div class="result-item">
+          <div class="r-label">লাভ</div>
+          <div class="r-val" id="r-profit">₹5,61,695</div>
+        </div>
+        <div class="result-item">
+          <div class="r-label">লাভের হার</div>
+          <div class="r-val" id="r-pct">93.6%</div>
+        </div>
+        <div class="bar-vis">
+          <div class="bar-wrap">
+            <div class="bar-inner bar-invest" id="bar-i" style="height:45px"><span>বিনিয়োগ</span></div>
+          </div>
+          <div class="bar-wrap">
+            <div class="bar-inner bar-profit" id="bar-r" style="height:35px"><span>লাভ</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="disclaimer">⚠️ এই হিসাব শুধুমাত্র উদাহরণের জন্য। মিউচুয়াল ফান্ডে বিনিয়োগ বাজারের ঝুঁকির অধীন। বিনিয়োগের আগে স্কিম সংক্রান্ত নথি পড়ুন।</div>
+  </div>
+
+  <!-- DELAY LOSS CALCULATOR -->
+  <div class="section" id="delay">
+    <div class="section-title">দেরি করলে কত ক্ষতি?</div>
+    <p style="font-size:13px;color:var(--text-muted);margin-bottom:1rem;">যত দেরিতে বিনিয়োগ শুরু করবেন, তত বেশি লাভ হাতছাড়া হবে — এখনই দেখুন!</p>
+    <div class="calc-card">
+      <div class="slider-row">
+        <div class="field-label">মাসিক SIP <span id="d-amt-lbl">₹5,000</span></div>
+        <input type="range" min="500" max="100000" step="500" value="5000" id="d-amt" oninput="calcDelay()">
+      </div>
+      <div class="slider-row">
+        <div class="field-label">প্রত্যাশিত রিটার্ন (বার্ষিক) <span id="d-rate-lbl">12%</span></div>
+        <input type="range" min="6" max="20" step="0.5" value="12" id="d-rate" oninput="calcDelay()">
+      </div>
+      <div class="slider-row">
+        <div class="field-label">মোট বিনিয়োগের সময়কাল <span id="d-yr-lbl">15 বছর</span></div>
+        <input type="range" min="3" max="30" step="1" value="15" id="d-yr" oninput="calcDelay()">
+      </div>
+      <div class="slider-row">
+        <div class="field-label">কত মাস দেরি করলেন? <span id="d-delay-lbl" style="color:var(--coral)">12 মাস</span></div>
+        <input type="range" min="1" max="120" step="1" value="12" id="d-delay" oninput="calcDelay()">
+      </div>
+      <div class="delay-result">
+        <div class="result-item">
+          <div class="r-label">সময়মতো শুরু করলে পেতেন</div>
+          <div class="r-val" id="d-ontime">—</div>
+        </div>
+        <div class="result-item">
+          <div class="r-label">দেরিতে শুরু করলে পাবেন</div>
+          <div class="r-val" id="d-late">—</div>
+        </div>
+        <div class="result-item" style="grid-column:1/-1; text-align:center;">
+          <div class="r-label" style="color:#FFBCBC; font-size:13px;">মোট ক্ষতি (হাতছাড়া লাভ)</div>
+          <div class="r-val loss-big" id="d-loss">—</div>
+        </div>
+      </div>
+      <div class="delay-note" id="d-note">
+        ⏰ এখনই শুরু করুন — একটু দেরিও বড় ক্ষতি ডেকে আনে!
+      </div>
+    </div>
+  </div>
+
+  <!-- INFLATION CALCULATOR -->
+  <div class="section" id="inflation">
+    <div class="section-title">মুদ্রাস্ফীতি (Inflation) ক্যালকুলেটর</div>
+    <p style="font-size:13px;color:var(--text-muted);margin-bottom:1rem;">দেখুন ব্যাংকে সঞ্চয় রাখলে মুদ্রাস্ফীতিতে কতটা ক্ষতি হচ্ছে</p>
+    <div class="infl-card">
+      <div class="slider-row">
+        <div class="field-label">আজকের পরিমাণ <span id="infl-amt-lbl">₹1,00,000</span></div>
+        <input type="range" min="10000" max="5000000" step="10000" value="100000" id="infl-amt" oninput="calcInfl()">
+      </div>
+      <div class="slider-row">
+        <div class="field-label">মুদ্রাস্ফীতির হার <span id="infl-rate-lbl">6%</span></div>
+        <input type="range" min="3" max="12" step="0.5" value="6" id="infl-rate" oninput="calcInfl()">
+      </div>
+      <div class="slider-row">
+        <div class="field-label">কত বছর পরে? <span id="infl-yr-lbl">10 বছর</span></div>
+        <input type="range" min="1" max="30" step="1" value="10" id="infl-yr" oninput="calcInfl()">
+      </div>
+      <div class="infl-result">
+        <div class="infl-row">
+          <span class="ilabel">আজকের মূল্য</span>
+          <span class="ival" id="infl-now">₹1,00,000</span>
+        </div>
+        <div class="infl-row">
+          <span class="ilabel" id="infl-yr-text">১০ বছর পরে এই পরিমাণের মূল্য</span>
+          <span class="ival loss" id="infl-future">₹55,839</span>
+        </div>
+        <div class="infl-row">
+          <span class="ilabel">ক্রয়ক্ষমতার ক্ষতি</span>
+          <span class="ival loss" id="infl-loss">₹44,161</span>
+        </div>
+        <div class="infl-row">
+          <span class="ilabel">ক্ষতির শতাংশ</span>
+          <span class="ival loss" id="infl-pct">44.2%</span>
+        </div>
+      </div>
+      <div class="infl-warning" id="infl-warn">
+        💡 ব্যাংক সেভিংস-এ ৩-৪% সুদে মুদ্রাস্ফীতি ৬% হলে আপনি আসলে ক্ষতির মুখে পড়ছেন। মিউচুয়াল ফান্ডে বিনিয়োগ করলে এই ক্ষতি এড়ানো সম্ভব।
+      </div>
+    </div>
+  </div>
+
+  <!-- WHY MUTUAL FUND -->
+  <div class="section">
+    <div class="section-title">কেন মিউচুয়াল ফান্ড?</div>
+    <div class="why-cards">
+      <div class="why-card">
+        <div class="why-icon" style="background:#E1F5EE">📈</div>
+        <h3>উচ্চ রিটার্ন</h3>
+        <p>দীর্ঘমেয়াদে ব্যাংকের চেয়ে অনেক বেশি রিটার্ন পাওয়ার সম্ভাবনা</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon" style="background:#FAEEDA">🛡️</div>
+        <h3>নিরাপদ বিনিয়োগ</h3>
+        <p>SEBI নিয়ন্ত্রিত, পেশাদার ফান্ড ম্যানেজার দ্বারা পরিচালিত</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon" style="background:#FAECE7">💰</div>
+        <h3>মাত্র ₹500 থেকে</h3>
+        <p>SIP-এর মাধ্যমে মাত্র ৫০০ টাকা থেকে শুরু করুন</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon" style="background:#E6F1FB">🔓</div>
+        <h3>যখন খুশি তুলুন</h3>
+        <p>বেশিরভাগ ফান্ড থেকে যেকোনো সময় টাকা তোলা যায়</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- HOW TO START -->
+  <div class="section">
+    <div class="section-title">কীভাবে শুরু করবেন?</div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">১</div>
+        <div class="step-content">
+          <h4>যোগাযোগ করুন</h4>
+          <p>WhatsApp বা ফোনে সুমিত মল্লিকের সাথে কথা বলুন। বাংলায় সব বোঝানো হবে।</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">২</div>
+        <div class="step-content">
+          <h4>KYC সম্পন্ন করুন</h4>
+          <p>আধার ও প্যান কার্ড দিয়ে অনলাইনে KYC করুন। সম্পূর্ণ বিনামূল্যে।</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">৩</div>
+        <div class="step-content">
+          <h4>ফান্ড বেছে নিন</h4>
+          <p>আপনার লক্ষ্য ও ঝুঁকি অনুযায়ী সেরা মিউচুয়াল ফান্ড বেছে দেওয়া হবে।</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">৪</div>
+        <div class="step-content">
+          <h4>SIP শুরু করুন</h4>
+          <p>মাসিক Auto-debit চালু করুন এবং চিন্তামুক্তভাবে বিনিয়োগ বাড়ান।</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REVIEWS -->
+  <div class="section reviews-section" id="reviews">
+    <div class="section-title">গ্রাহকদের অভিজ্ঞতা</div>
+    <div class="review-cards">
+
+      <div class="review-card">
+        <div class="review-quote">"</div>
+        <div class="review-header">
+          <div class="review-avatar" style="background:#1D9E75;">রা</div>
+          <div class="review-meta">
+            <div class="review-name">রাহুল দাস</div>
+            <div class="review-location">কলকাতা, পশ্চিমবঙ্গ</div>
+          </div>
+          <div class="review-stars">★★★★★</div>
+        </div>
+        <p class="review-body">সুমিত দা সব কিছু বাংলায় বুঝিয়ে দিয়েছেন। আগে মিউচুয়াল ফান্ড নিয়ে ভয় ছিল, এখন নিজে থেকেই বুঝতে পারছি। মাত্র ₹১,০০০ SIP দিয়ে শুরু করেছিলাম, আজ ৩ বছরে ভালো রিটার্ন পাচ্ছি।</p>
+        <span class="review-tag">SIP বিনিয়োগকারী</span>
+      </div>
+
+      <div class="review-card">
+        <div class="review-quote">"</div>
+        <div class="review-header">
+          <div class="review-avatar" style="background:#0F6E56;">প্র</div>
+          <div class="review-meta">
+            <div class="review-name">প্রিয়া সাহা</div>
+            <div class="review-location">হাওড়া, পশ্চিমবঙ্গ</div>
+          </div>
+          <div class="review-stars">★★★★★</div>
+        </div>
+        <p class="review-body">পরামর্শ সম্পূর্ণ বিনামূল্যে এবং কোনো চাপ নেই। নিজের লক্ষ্য অনুযায়ী ফান্ড বেছে দিয়েছেন। KYC প্রক্রিয়াটাও খুব সহজ ছিল। সত্যিকারের বিশ্বস্ত পরামর্শদাতা।</p>
+        <span class="review-tag">প্রথমবার বিনিয়োগকারী</span>
+      </div>
+
+      <div class="review-card">
+        <div class="review-quote">"</div>
+        <div class="review-header">
+          <div class="review-avatar" style="background:#EF9F27;">সু</div>
+          <div class="review-meta">
+            <div class="review-name">সুজিত মণ্ডল</div>
+            <div class="review-location">দুর্গাপুর, পশ্চিমবঙ্গ</div>
+          </div>
+          <div class="review-stars">★★★★★</div>
+        </div>
+        <p class="review-body">ব্যাংকে টাকা রেখে লাভ হচ্ছিল না। সুমিত দার পরামর্শে Equity Mutual Fund-এ বিনিয়োগ করলাম। ৫ বছরে প্রায় দ্বিগুণ হয়েছে। ইনফ্লেশনের বিরুদ্ধে সেরা অস্ত্র।</p>
+        <span class="review-tag">দীর্ঘমেয়াদী বিনিয়োগকারী</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- CONTACT (desktop: sticky right sidebar) -->
+  <div class="sidebar-sticky">
+  <div class="contact-section" id="contact">
+    <h2>আজই যোগাযোগ করুন</h2>
+    <p>বিনামূল্যে পরামর্শের জন্য এখনই যোগাযোগ করুন</p>
+    <div class="phone-display">
+      <span class="pnum">70039 51662</span>
+      <small>সুমিত মল্লিক — WhatsApp ও কলিং উভয়ই উপলব্ধ</small>
+    </div>
+    <div class="contact-btns">
+      <a class="contact-btn wa-btn" href="https://wa.me/917003951662?text=নমস্কার%2Cআমি%20মিউচুয়াল%20ফান্ডে%20ইনভেস্ট%20করতে%20চাই।" target="_blank">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.122.552 4.112 1.516 5.842L0 24l6.336-1.483A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.368l-.36-.214-3.727.876.892-3.634-.234-.374A9.818 9.818 0 1112 21.818z"/></svg>
+        WhatsApp করুন — 70039 51662
+      </a>
+      <a class="contact-btn call-btn" href="tel:+917003951662">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.88 11 19.79 19.79 0 011.81 2.18 2 2 0 013.81 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.91 7.91a16 16 0 006.18 6.18l1.28-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        ফোন করুন — 70039 51662
+      </a>
+    </div>
+    <div class="contact-info-row">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      সোম–শনি, সকাল ১০টা – রাত ৮টা উপলব্ধ
+    </div>
+  </div>
+
+  <div class="disclaimer">⚠️ এই হিসাব শুধুমাত্র উদাহরণের জন্য। মিউচুয়াল ফান্ডে বিনিয়োগ বাজারের ঝুঁকির অধীন। বিনিয়োগের আগে স্কিম সংক্রান্ত নথি পড়ুন।</div>
+  </div><!-- end sidebar-sticky -->
+
+</main>
+
+<footer>
+  <strong>বাংলার মিউচুয়াল ফান্ড</strong> · সুমিত মল্লিক<br>
+  <span>AMFI নথিভুক্ত বিতরণকারী · মিউচুয়াল ফান্ড বিনিয়োগ বাজারের ঝুঁকির অধীন</span>
+</footer>
+
+<script>
+function fmt(n) {
+  if (n >= 10000000) return '₹' + (n/10000000).toFixed(2) + ' কোটি';
+  if (n >= 100000) return '₹' + (n/100000).toFixed(2) + ' লাখ';
+  return '₹' + Math.round(n).toLocaleString('en-IN');
+}
+
+function switchTab(t) {
+  document.getElementById('tab-sip').classList.toggle('active', t === 'sip');
+  document.getElementById('tab-lump').classList.toggle('active', t === 'lump');
+  document.getElementById('sip-section').style.display = t === 'sip' ? 'block' : 'none';
+  document.getElementById('lump-section').style.display = t === 'lump' ? 'block' : 'none';
+  if (t === 'sip') calcSIP(); else calcLump();
+}
+
+function calcSIP() {
+  const amt = +document.getElementById('sip-amt').value;
+  const rate = +document.getElementById('sip-rate').value;
+  const yr = +document.getElementById('sip-yr').value;
+  document.getElementById('sip-amt-lbl').textContent = '₹' + amt.toLocaleString('en-IN');
+  document.getElementById('sip-rate-lbl').textContent = rate + '%';
+  document.getElementById('sip-yr-lbl').textContent = yr + ' বছর';
+  const r = rate / 100 / 12;
+  const n = yr * 12;
+  const total = amt * ((Math.pow(1 + r, n) - 1) / r) * (1 + r);
+  const invested = amt * n;
+  showResult(invested, total);
+}
+
+function calcLump() {
+  const amt = +document.getElementById('lump-amt').value;
+  const rate = +document.getElementById('lump-rate').value;
+  const yr = +document.getElementById('lump-yr').value;
+  document.getElementById('lump-amt-lbl').textContent = fmt(amt);
+  document.getElementById('lump-rate-lbl').textContent = rate + '%';
+  document.getElementById('lump-yr-lbl').textContent = yr + ' বছর';
+  const total = amt * Math.pow(1 + rate / 100, yr);
+  showResult(amt, total);
+}
+
+function showResult(invested, total) {
+  const profit = total - invested;
+  const pct = (profit / invested * 100);
+  document.getElementById('r-invested').textContent = fmt(invested);
+  document.getElementById('r-total').textContent = fmt(total);
+  document.getElementById('r-profit').textContent = fmt(profit);
+  document.getElementById('r-pct').textContent = pct.toFixed(1) + '%';
+  const ratio = invested / total;
+  const iH = Math.max(12, Math.round(ratio * 58));
+  const rH = Math.max(12, Math.round((1 - ratio) * 58));
+  document.getElementById('bar-i').style.height = iH + 'px';
+  document.getElementById('bar-r').style.height = rH + 'px';
+}
+
+function calcDelay() {
+  const amt = +document.getElementById('d-amt').value;
+  const rate = +document.getElementById('d-rate').value;
+  const yr = +document.getElementById('d-yr').value;
+  const delayMo = +document.getElementById('d-delay').value;
+  document.getElementById('d-amt-lbl').textContent = '₹' + amt.toLocaleString('en-IN');
+  document.getElementById('d-rate-lbl').textContent = rate + '%';
+  document.getElementById('d-yr-lbl').textContent = yr + ' বছর';
+  const delayText = delayMo < 12
+    ? delayMo + ' মাস'
+    : (delayMo % 12 === 0 ? (delayMo / 12) + ' বছর' : Math.floor(delayMo / 12) + ' বছর ' + (delayMo % 12) + ' মাস');
+  document.getElementById('d-delay-lbl').textContent = delayText;
+
+  const r = rate / 100 / 12;
+  const nFull = yr * 12;
+  const nLate = Math.max(0, nFull - delayMo);
+
+  function sipFV(months) {
+    if (months <= 0) return 0;
+    return amt * ((Math.pow(1 + r, months) - 1) / r) * (1 + r);
+  }
+
+  const onTime = sipFV(nFull);
+  const late = sipFV(nLate);
+  const loss = onTime - late;
+  const lossPct = (loss / onTime * 100);
+
+  document.getElementById('d-ontime').textContent = fmt(onTime);
+  document.getElementById('d-late').textContent = fmt(late);
+  document.getElementById('d-loss').textContent = fmt(loss);
+
+  const noteEl = document.getElementById('d-note');
+  noteEl.textContent = `⏰ মাত্র ${delayText} দেরির কারণে ${fmt(loss)} (${lossPct.toFixed(1)}%) লাভ হাতছাড়া হচ্ছে! আজই শুরু করুন, একদিনও দেরি নয়।`;
+}
+
+function calcInfl() {
+  const amt = +document.getElementById('infl-amt').value;
+  const rate = +document.getElementById('infl-rate').value;
+  const yr = +document.getElementById('infl-yr').value;
+  document.getElementById('infl-amt-lbl').textContent = fmt(amt);
+  document.getElementById('infl-rate-lbl').textContent = rate + '%';
+  document.getElementById('infl-yr-lbl').textContent = yr + ' বছর';
+  document.getElementById('infl-yr-text').textContent = yr + ' বছর পরে এই পরিমাণের মূল্য';
+  const future = amt / Math.pow(1 + rate / 100, yr);
+  const loss = amt - future;
+  const pct = (loss / amt * 100);
+  document.getElementById('infl-now').textContent = fmt(amt);
+  document.getElementById('infl-future').textContent = fmt(future);
+  document.getElementById('infl-loss').textContent = fmt(loss);
+  document.getElementById('infl-pct').textContent = pct.toFixed(1) + '%';
+  const bankRate = 3.5;
+  const shortfall = rate - bankRate;
+  if (shortfall > 0) {
+    document.getElementById('infl-warn').textContent =
+      `💡 ব্যাংক সেভিংস-এ ${bankRate}% সুদে মুদ্রাস্ফীতি ${rate}% হলে প্রতি বছর ${shortfall.toFixed(1)}% ক্রয়ক্ষমতা কমছে। ${yr} বছরে মোট ক্ষতি ${fmt(loss)} — মিউচুয়াল ফান্ড এই ক্ষতি পুষিয়ে দিতে পারে!`;
+  } else {
+    document.getElementById('infl-warn').textContent =
+      `✅ এই হারে মুদ্রাস্ফীতি কম, তবে দীর্ঘমেয়াদে মিউচুয়াল ফান্ড আরও বেশি রিটার্ন দিতে পারে।`;
+  }
+}
+
+calcSIP();
+calcDelay();
+calcInfl();
+</script>
+</body>
+</html>
